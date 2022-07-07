@@ -15,9 +15,9 @@ export const validateLogin = [
 ]
 
 export const validateSignup = [
-  body('name').exists().trim().isLength({ min: 3 }),
+  body('name').trim().isLength({ min: 3 }),
   body('email').isEmail().normalizeEmail(),
-  body('password').exists().isStrongPassword(),
+  body('password').isStrongPassword(),
   body('location').exists(),
   validateFields,
 ]
