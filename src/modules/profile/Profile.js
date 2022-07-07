@@ -1,12 +1,12 @@
 import bcrypt from 'bcrypt'
-import Mongoose from 'mongoose'
+import mongoose from 'mongoose'
 
-const profileSchema = Mongoose.Schema(
+const profileSchema = mongoose.Schema(
   {
-    name: { type: 'string', unique: true },
-    email: { type: 'string', required: true },
+    name: { type: 'string', required: true, unique: true },
+    email: { type: 'string', required: true, unique: true },
     password: { type: 'string', required: true },
-    location: { type: 'string' },
+    location: { type: 'string', required: true },
     description: { type: 'string' },
     image: { type: 'string' },
   },
@@ -31,5 +31,5 @@ profileSchema.methods.comparePassword = async function (password) {
   })
 }
 
-const Profile = Mongoose.Model(profileSchema)
+const Profile = mongoose.model('Profile', profileSchema)
 export default Profile
