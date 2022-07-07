@@ -1,15 +1,23 @@
 import { body, validationResult } from 'express-validator'
 
+const validateFields = (request, response, next) => {
+  const errors = validationResult(request)
+  if (!errors.isEmpty()) {
+    return response.status(400).json(errors)
+  }
+  next()
+}
+
 export const validateLogin = [
-  body('email').isEmail(),
+  body('name').exists().isLength({ min: 3 }),
   body('password').not().isEmpty(),
-  (request, response, next) => {
-    const errors = validationResult(request)
-    if (!errors.isEmpty()) {
-      return response.status(400).json(errors)
-    }
-    next()
-  },
+  validateFields,
 ]
 
-export const validateSignup = []
+export const validateSignup = [
+  body('name').exists().trim().isLength({ min: 3 }),
+  body('email').isEmail().normalizeEmail(),
+  body('password').exists().isStrongPassword(),
+  body('location').exists(),
+  validateFields,
+]
