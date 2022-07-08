@@ -24,11 +24,9 @@ profileSchema.pre('save', async function (next) {
 })
 
 profileSchema.methods.comparePassword = async function (password) {
-  return new Promise(async (resolve, reject) => {
-    const user = this
-    const isValid = await bcrypt.compare(password, user.password)
-    resolve(isValid)
-  })
+  const user = this
+  const isValid = await bcrypt.compare(password, user.password)
+  Promise.resolve(isValid)
 }
 
 const Profile = mongoose.model('Profile', profileSchema)
