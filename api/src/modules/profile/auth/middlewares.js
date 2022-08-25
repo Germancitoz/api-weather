@@ -7,14 +7,15 @@ export const isAuthenticated = async (request, response, next) => {
   if (!token) return response.status(400).json({ error: 'not token found' })
 
   try {
-    const payload_id = verifyToken(token)
-    const profile = await Profile.findById(payload_id)
-    if (!profile)
+    const payloadId = verifyToken(token)
+    const profile = await Profile.findById(payloadId)
+    if (!profile) {
       return response
         .status(404)
         .json({ error: 'This token does have no profile' })
+    }
 
-    request.id = payload_id
+    request.id = payloadId
     next()
   } catch (error) {
     return response.status(404).json({ error: error.message })

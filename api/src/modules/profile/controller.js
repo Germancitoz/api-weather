@@ -12,7 +12,7 @@ export const getProfileByName = async (request, response) => {
   response.status(200).json(profile)
 }
 
-//todo check if the user is
+// todo check if the user is
 export const updateProfile = async (request, response) => {
   const { id } = request
   const { name, email, password, location, description, image } = request.body
@@ -32,8 +32,9 @@ export const deleteProfile = async (request, response) => {
   const { password } = request.body
 
   const profile = await Profile.findById(id)
-  if (!profile.comparePassword(password))
+  if (!profile.comparePassword(password)) {
     return response.status(404).json({ error: 'Password incorrect' })
+  }
 
   await profile.delete()
   response.status(200).json({ success: true })
