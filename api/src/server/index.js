@@ -3,7 +3,7 @@ import SERVER_CONFIG from '../config/server.js'
 import { setEndpoints } from './endpoints.js'
 import { setMiddlewares } from './middlewares.js'
 
-export const startServer = async () => {
+export const startServer = () => {
   return new Promise((resolve, reject) => {
     const server = express()
     setMiddlewares(server)
