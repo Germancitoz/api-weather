@@ -24,8 +24,8 @@ profileSchema.pre('save', async function (next) {
 })
 
 profileSchema.methods.comparePassword = async function (password) {
-  const user = this
-  const isValid = await bcrypt.compare(password, user.password)
+  const profile = this
+  const isValid = await bcrypt.compare(password, profile.password)
   Promise.resolve(isValid)
 }
 
