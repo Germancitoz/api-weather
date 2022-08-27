@@ -1,3 +1,4 @@
+import errorsHandler from '../../server/errorsHandler.js'
 import Profile from './Profile.js'
 
 export const getAllProfiles = async (request, response) => {
@@ -32,7 +33,7 @@ export const deleteProfile = async (request, response) => {
 
   const profile = await Profile.findById(id)
   if (!profile.comparePassword(password)) {
-    return response.status(404).json({ error: 'Password incorrect' })
+    return errorsHandler(response, 'AUTH_PASSWORD_MISMATCH')
   }
 
   await profile.delete()

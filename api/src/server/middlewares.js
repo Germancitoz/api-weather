@@ -22,7 +22,9 @@ export const setMiddlewares = (server) => {
       windowMs: 15 * 60 * 1000, // 15 minutes
       max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
       handler: (request, response, next, options) =>
-        response.status(options.statusCode).json({ error: options.message }),
+        response
+          .status(options.statusCode)
+          .json({ success: false, message: options.message }),
     })
   )
   server.use(morgan(SERVER_CONFIG.STATE === 'development' ? 'dev' : 'tiny'))
