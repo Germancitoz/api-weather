@@ -7,7 +7,6 @@ export const handleLogin = async (request, response) => {
   const profile = await Profile.findOne().where({ name })
 
   if (!profile) return response.status(404).json({ error: 'Not profile found' })
-
   if (!(await profile.comparePassword(password))) {
     return response.status(404).json({ error: 'Password mismatch' })
   }

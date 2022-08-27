@@ -12,7 +12,6 @@ export const getProfileByName = async (request, response) => {
   response.status(200).json(profile)
 }
 
-// todo check if the user is
 export const updateProfile = async (request, response) => {
   const { id } = request
   const { name, email, password, location, description, image } = request.body
