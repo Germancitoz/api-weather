@@ -8,7 +8,7 @@ import SERVER_CONFIG from '../config/server.js'
 export const setMiddlewares = (server) => {
   server.use(
     express.json({
-      limit: 1,
+      limit: 9000,
     })
   )
   server.use(
