@@ -6,10 +6,9 @@ export const isAuthenticated = async (request, response, next) => {
   const token = request.headers.authorization?.split(' ')[1] // Remove Bearer
 
   if (!token) return errorHandler(response, 'AUTH_TOKEN_NOT_FOUND')
-
   try {
     const payloadId = verifyToken(token)
-    const profile = await Profile.findById(payloadId)
+    const profile = await Profile.findById(payloadId._id)
 
     if (!profile) return errorHandler(response, 'AUTH_TOKEN_WITHOUT_PROFILE')
 
