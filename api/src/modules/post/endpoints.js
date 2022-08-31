@@ -1,4 +1,5 @@
 import express from 'express'
+import { isAuthenticated } from '../profile/auth/middlewares.js'
 import {
   createPost,
   deletePost,
@@ -11,8 +12,8 @@ const router = express.Router()
 
 router.get('/', getPosts)
 router.get('/:id', getPostById)
-router.put('/', createPost)
-router.post('/', updatePost)
-router.delete('/', deletePost)
+router.put('/', [isAuthenticated], createPost)
+router.post('/', [isAuthenticated], updatePost)
+router.delete('/', [isAuthenticated], deletePost)
 
 export default router
