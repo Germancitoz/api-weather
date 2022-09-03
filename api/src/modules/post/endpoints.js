@@ -13,7 +13,7 @@ const router = express.Router()
 router.get('/', getPosts)
 router.get('/:id', getPostById)
 router.put('/', [isAuthenticated], createPost)
-router.post('/', [isAuthenticated], updatePost)
-router.delete('/', [isAuthenticated], deletePost)
+router.post('/:id', [], updatePost)
+router.delete('/:id', [isAuthenticated], deletePost)
 
 export default router

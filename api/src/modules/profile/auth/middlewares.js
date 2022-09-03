@@ -15,6 +15,6 @@ export const isAuthenticated = async (request, response, next) => {
     request.id = payloadId
     next()
   } catch (error) {
-    return response.status(404).json({ success: false, message: error.message })
+    return errorHandler(response, error.message)
   }
 }
