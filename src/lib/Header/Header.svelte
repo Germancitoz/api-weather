@@ -3,8 +3,8 @@
 </script>
 
 <h1
-	class="font-bold text-center text-transparent text-7xl bg-clip-text bg-gradient-to-r from-white p-2 to-black"
+	class="font-bold text-center text-transparent text-7xl bg-clip-text bg-gradient-to-r text-white"
 >
-	Blogit
+	OnlyFacts
 </h1>
 <Nav />
