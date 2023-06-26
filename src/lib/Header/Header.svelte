@@ -3,7 +3,7 @@
 </script>
 
 <h1
-	class="font-bold text-center text-transparent text-7xl bg-clip-text bg-gradient-to-r text-white"
+	class="overflow-hidden font-bold text-center text-transparent text-7xl bg-clip-text bg-gradient-to-r text-white"
 >
 	OnlyFacts
 </h1>
