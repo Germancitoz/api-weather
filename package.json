@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@supabase/supabase-js": "^2.26.0",
 		"prettier-plugin-tailwindcss": "^0.3.0"
 	}
 }
