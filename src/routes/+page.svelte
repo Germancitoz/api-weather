@@ -4,7 +4,6 @@
 
 	export let data
 
-	let posts = data.posts
 	let focus = -1
 
 	function handleFocus(event: CustomEvent<number>) {
@@ -21,8 +20,8 @@
 	class="mx-auto mt-6 flex max-w-3xl flex-col gap-6 transition-all"
 >
 	<PostForm focus={focus === -1} on:focus={handleFocus} />
-	{#each posts as post, i}
-		{#if focus === -1 || i == focus}
+	{#each data.posts as post}
+		{#if focus === -1 || post.id == focus}
 			<Post {post} on:focus={handleFocus} focus />
 		{:else}
 			<Post {post} on:focus={handleFocus} />

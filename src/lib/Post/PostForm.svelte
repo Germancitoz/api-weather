@@ -13,8 +13,8 @@
 <form
 	method="POST"
 	action="?/create"
-	use:enhance
 	on:mouseenter={handleFocus}
+	use:enhance
 	class:opacity-40={!focus}
 	class="flex flex-col rounded-lg bg-neutral-950 p-4 ring-1 ring-white/10"
 >
