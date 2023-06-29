@@ -14,7 +14,7 @@
 </script>
 
 <a
-	href="/post/{post.id}"
+	href="/posts/{post.id}"
 	class:opacity-40={!focus}
 	on:mouseenter={onHover}
 	class="
