@@ -3,7 +3,7 @@
 </script>
 
 <nav
-	class="mx-auto mt-6 max-w-md rounded-xl bg-neutral-950 p-2 font-medium text-neutral-400 shadow-lg shadow-neutral-700/5 ring-1 ring-white/10"
+	class="mx-auto mt-6 max-w-md rounded-xl bg-neutral-950 p-2 font-medium text-neutral-400 shadow-lg shadow-neutral-700/10 ring-1 ring-white/10"
 >
 	<ul class="flex justify-around gap-4">
 		<NavLink href="/">Home</NavLink>
