@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms'
 	import { createEventDispatcher } from 'svelte'
 
@@ -40,7 +40,7 @@
 		/>
 	</div>
 	<button
-		class="mt-8 rounded-lg bg-white p-3 text-lg font-bold text-neutral-900 transition-all hover:bg-neutral-950 hover:text-white hover:ring-1 hover:ring-white"
+		class="mt-8 rounded-lg bg-white p-3 text-lg font-bold text-neutral-900 transition-all hover:bg-neutral-950 hover:text-white hover:ring-2 hover:ring-white"
 		type="submit">Post</button
 	>
 </form>
