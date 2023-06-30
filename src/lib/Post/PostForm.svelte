@@ -24,7 +24,8 @@
 			type="text"
 			name="title"
 			placeholder="CocaCola > Pepsi"
-			aria-label="asdadadad"
+			aria-label="Post title"
+			minlength="10"
 			maxlength="100"
 			required
 		/>
@@ -36,6 +37,7 @@
 			cols="1"
 			rows="4"
 			required
+			minlength="40"
 			maxlength="300"
 		/>
 	</div>
