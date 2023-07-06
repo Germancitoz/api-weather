@@ -17,10 +17,12 @@ export async function getPostsByUserId(user_id: Post['user_id'] | undefined, lim
 }
 
 export async function createPost(post: PostCreate) {
-	try {
-		const validatedPost = validatePost(post)
-		await supabase.from('posts').insert([validatedPost])
-	} catch (error) {
-		return error
+	const validatedPost = validatePost(post)
+
+	if (!validatedPost.success) {
+		return validatedPost
 	}
+
+	await supabase.from('posts').insert([validatedPost])
+	return validatedPost
 }

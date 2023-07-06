@@ -8,5 +8,5 @@ const PostSchema = z.object({
 })
 
 export function validatePost(post: PostCreate) {
-	return PostSchema.parse(post)
+	return PostSchema.safeParse(post)
 }

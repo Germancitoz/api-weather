@@ -4,6 +4,7 @@ import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async () => {
 	const posts = await getPosts()
+
 	return {
 		posts
 	}
@@ -17,10 +18,10 @@ export const actions: Actions = {
 
 		const post = await createPost({ title, body, user_id: 1 })
 
-		if (post instanceof Error) {
+		if (!post.success) {
 			return fail(303, {
 				success: false,
-				errors: [post.message]
+				errors: post.error.flatten().fieldErrors
 			})
 		}
 
