@@ -24,7 +24,7 @@
 	 	p-4 ring-1 ring-white/10 transition-all duration-300 hover:ring-white"
 >
 	<header class="flex items-center justify-between">
-		<h3 class="text-2xl font-normal">
+		<h3 class="overflow-hidden text-ellipsis whitespace-nowrap text-2xl font-normal">
 			{post.title}
 			<IconNewPage />
 		</h3>
