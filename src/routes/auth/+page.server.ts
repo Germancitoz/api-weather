@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const { data, error } = await locals.supabase.auth.signInWithOAuth({
 		provider: 'github',
 		options: {
-			redirectTo: 'http://localhost:5173/auth/callback'
+			redirectTo: 'auth/callback'
 		}
 	})
 
@@ -27,7 +27,7 @@ export const actions: Actions = {
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
 			provider: 'github',
 			options: {
-				redirectTo: 'http://localhost:5173/auth/callback'
+				redirectTo: 'auth/callback'
 			}
 		})
 
