@@ -10,9 +10,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const { data, error } = await locals.supabase.auth.signInWithOAuth({
 		provider: 'github',
-		options: {
-			redirectTo: 'auth/callback'
-		}
+		options: {}
 	})
 
 	if (error) {
@@ -26,9 +24,7 @@ export const actions: Actions = {
 	login: async ({ locals }) => {
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
 			provider: 'github',
-			options: {
-				redirectTo: 'auth/callback'
-			}
+			options: {}
 		})
 
 		if (error) {
