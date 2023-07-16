@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
 	import { createEventDispatcher } from 'svelte'
+	import type { ActionData } from '../../routes/$types'
 
 	export let focus = false
+	export let data: ActionData
 
 	const dispatch = createEventDispatcher()
 	async function handleFocus() {
@@ -20,29 +22,38 @@
 >
 	<div class="flex flex-col gap-4">
 		<input
-			class="rounded-md bg-neutral-800 p-2 text-lg text-neutral-100 outline-none placeholder:text-neutral-500 focus:outline-neutral-200"
+			id="title"
+			class:outline-red-900={data?.errors?.title}
+			class="rounded-md bg-neutral-800 p-2 text-lg {!data?.errors?.title
+				? 'focus:outline-neutral-200'
+				: ''} text-neutral-100 outline-none placeholder:text-neutral-500"
 			type="text"
 			name="title"
 			placeholder="CocaCola > Pepsi"
 			aria-label="Post title"
-			minlength="10"
-			maxlength="100"
-			required
 		/>
+		{#if data?.errors?.title}
+			<label class="text-sm text-neutral-400" for="title">*{data.errors.title}*</label>
+		{/if}
 
 		<textarea
-			class="resize-none rounded-md bg-neutral-800 p-2 text-neutral-100 outline-none placeholder:text-neutral-500 focus:outline-neutral-200"
+			id="body"
+			class:outline-red-900={data?.errors?.body}
+			class="resize-none rounded-md bg-neutral-800 p-2 text-neutral-100 outline-none placeholder:text-neutral-500 {!data
+				?.errors?.title
+				? 'focus:outline-neutral-200'
+				: ''}"
 			name="body"
 			placeholder="CocaCola is better in the all aspectsz"
 			cols="1"
 			rows="4"
-			required
-			minlength="40"
-			maxlength="300"
 		/>
+		{#if data?.errors?.body}
+			<label for="body" class="text-sm text-neutral-400">*{data.errors.body}*</label>
+		{/if}
 	</div>
 	<button
-		class="mt-8 rounded-lg bg-white p-3 text-lg font-bold text-neutral-900 transition-all hover:bg-neutral-950 hover:text-white hover:ring-2 hover:ring-white"
+		class="mt-4 rounded-lg bg-white p-3 text-lg font-bold text-neutral-900 transition-all hover:bg-neutral-950 hover:text-white hover:ring-2 hover:ring-white"
 		type="submit">Post</button
 	>
 </form>

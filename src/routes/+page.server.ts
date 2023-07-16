@@ -1,4 +1,4 @@
-import { fail, type Actions } from '@sveltejs/kit'
+import { fail, redirect, type Actions } from '@sveltejs/kit'
 import { createPost, getPosts } from '../services/posts/index.server'
 import type { PageServerLoad } from './$types'
 
@@ -11,12 +11,18 @@ export const load: PageServerLoad = async () => {
 }
 
 export const actions: Actions = {
-	create: async ({ request }) => {
+	create: async ({ request, locals, fetch }) => {
+		const session = await locals.getSession()
+
+		if (!session) {
+			throw redirect(303, '/auth')
+		}
+
 		const form = await request.formData()
 		const title = form.get('title') as string
 		const body = form.get('body') as string
 
-		const post = await createPost({ title, body, user_id: 1 })
+		const post = await createPost({ title, body, user_id: session.user.id })
 
 		if (!post.success) {
 			return fail(303, {
