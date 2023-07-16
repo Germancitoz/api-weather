@@ -9,7 +9,10 @@ export const load: PageServerLoad = async ({ locals }) => {
 	}
 
 	const { data, error } = await locals.supabase.auth.signInWithOAuth({
-		provider: 'github'
+		provider: 'github',
+		options: {
+			redirectTo: 'https://onlyfacts.vercel.app/auth/callback'
+		}
 	})
 
 	if (error) {
@@ -22,7 +25,10 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions: Actions = {
 	login: async ({ locals }) => {
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
-			provider: 'github'
+			provider: 'github',
+			options: {
+				redirectTo: 'https://onlyfacts.vercel.app/auth/callback'
+			}
 		})
 
 		if (error) {
