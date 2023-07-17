@@ -3,8 +3,12 @@ import { supabase } from '../supabase.server'
 import { validatePost } from './validation.server'
 
 export async function getPosts() {
-	return (await supabase.from('posts').select('*, profiles (email, user_name, avatar_url)'))
-		.data as PostWithUser[]
+	return (
+		await supabase
+			.from('posts')
+			.select('*, profiles (email, user_name, avatar_url)')
+			.order('id', { ascending: false })
+	).data as PostWithUser[]
 }
 
 export async function getPostById(id: Post['id']): Promise<PostWithUser | null> {
