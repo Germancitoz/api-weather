@@ -14,6 +14,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>{post.title}</title>
+</svelte:head>
+
 <a
 	href="/posts/{post.id}"
 	class:opacity-40={!focus}
@@ -35,7 +39,9 @@
 			class="h-8 w-8 rounded-full"
 		/>
 	</header>
-	<p class="text-sm text-neutral-500">by {post.profiles.user_name}</p>
+	<p class="text-sm text-neutral-500">
+		by <span class="text-neutral-400">{post.profiles.user_name}</span>
+	</p>
 	<p class="mt-4 line-clamp-3 text-neutral-300">
 		{post.body}
 	</p>
