@@ -5,6 +5,10 @@
 	export let data: PageData
 </script>
 
+<svelte:head>
+	<title>{data.post.title}</title>
+</svelte:head>
+
 {#if data.post}
 	<main class="mt-12 rounded-xl bg-neutral-950 p-6">
 		<header class="flex items-center gap-4">
