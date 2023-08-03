@@ -1,5 +1,11 @@
+import { MODE } from '$env/static/private'
 import { redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from '../$types'
+
+const redirectTo =
+	MODE === 'DEV'
+		? 'http://localhost:5173/auth/callback'
+		: 'https://onlyfacts.vercel.app/auth/callback'
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.getSession()
@@ -11,7 +17,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const { data, error } = await locals.supabase.auth.signInWithOAuth({
 		provider: 'github',
 		options: {
-			redirectTo: 'https://onlyfacts.vercel.app/auth/callback'
+			redirectTo
 		}
 	})
 
@@ -27,7 +33,7 @@ export const actions: Actions = {
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
 			provider: 'github',
 			options: {
-				redirectTo: 'https://onlyfacts.vercel.app/auth/callback'
+				redirectTo
 			}
 		})
 
