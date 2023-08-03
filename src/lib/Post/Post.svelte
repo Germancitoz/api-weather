@@ -14,10 +14,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{post.title}</title>
-</svelte:head>
-
 <a
 	href="/posts/{post.id}"
 	class:opacity-40={!focus}

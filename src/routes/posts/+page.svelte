@@ -11,10 +11,7 @@
 	{#each data.posts as post, i}
 		<a
 			class="max text overflow-hidden text-ellipsis whitespace-nowrap rounded-md border-2 border-neutral-700 p-4 transition-all hover:border-white"
-			href="posts/{post.id}"
-			><span class="text-xl font-bold">#{i + 1} </span>{post.title} Lorem, ipsum dolor sit amet consectetur
-			adipisicing elit. Commodi laborum vero debitis id minus aliquid repellendus tenetur pariatur recusandae
-			consectetur fugit ipsa, ex ipsam! Reiciendis ab amet commodi dolorem enim.</a
+			href="posts/{post.id}"><span class="text-xl font-bold">#{i + 1} </span>{post.title}</a
 		>
 	{/each}
 </ul>
