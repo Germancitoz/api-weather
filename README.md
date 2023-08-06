@@ -1,4 +1,4 @@
-# [OnlyFacts](onlyfacts.vercel.app/)
+# [OnlyFacts](https://onlyfacts.vercel.app/))
 
 ## Description
 
